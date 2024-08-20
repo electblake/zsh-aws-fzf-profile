@@ -6,7 +6,7 @@ if ! typeset -f _command_exists > /dev/null; then
   }
 fi
 
-function aws_fzf_profile () {
+function fzap () {
     if _command_exists "aws"; then
       if _command_exists "fzf"; then
           # Get the current AWS profile
@@ -27,5 +27,4 @@ function aws_fzf_profile () {
   fi
 }
 
-alias afp=aws_fzf_profile
-alias aws-profile=aws_fzf_profile
+alias fuzzy-aws-profile=fzap

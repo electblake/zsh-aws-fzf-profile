@@ -9,6 +9,12 @@ fi
 function fzap () {
     if _command_exists "aws"; then
       if _command_exists "fzf"; then
+          # Check if the current AWS session is valid
+          if ! aws sts get-caller-identity >/dev/null 2>&1; then
+              echo "AWS session is not valid or has expired. Please log in."
+              return 1
+          fi
+
           # Get the current AWS profile
           CURR_AWS_PROFILE=$(aws configure list | grep -m 1 profile | awk '{print $2}')
           NEW_AWS_PROFILE=$(aws configure list-profiles | fzf --header="Current Profile: $CURR_AWS_PROFILE")

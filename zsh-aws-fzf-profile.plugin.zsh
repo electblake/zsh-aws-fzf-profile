@@ -29,4 +29,3 @@ function aws_fzf_profile () {
 
 alias afp=aws_fzf_profile
 alias aws-profile=aws_fzf_profile
-echo "aws-profile zsh plugin loaded"
